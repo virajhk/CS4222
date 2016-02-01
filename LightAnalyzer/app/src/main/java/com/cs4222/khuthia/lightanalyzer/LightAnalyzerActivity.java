@@ -383,7 +383,7 @@ public class LightAnalyzerActivity
     /** Flag to indicate that light sensing is going on. */
     private boolean isLightSamplingOn;
 
-    private float threshold = 100;
+    private float threshold = 500;
 
     /** Handler to the main thread. */
     private Handler handler;
