@@ -129,7 +129,7 @@ public class ShootingAppActivity
         // Get references to the GUI widgets
         textView_Accl = (TextView) findViewById( R.id.TextView_Accl );
         textView_Gravity = (TextView) findViewById( R.id.TextView_Gravity );
-        textView_PhoneGesture = (TextView) findViewById( R.id.TextView_PhoneGesture );
+        textView_PhoneGesture = (TextView) findViewById(R.id.TextView_PhoneGesture);
         textView_PhoneFaceUp = (TextView) findViewById( R.id.TextView_PhoneFaceUp );
         textView_PhoneShootingRegion = (TextView) findViewById( R.id.TextView_PhoneShootingRegion );
     }
@@ -166,16 +166,16 @@ public class ShootingAppActivity
         sensorManager.registerListener( this ,                              // Listener
                 acclSensor ,                        // Sensor to measure
                 SensorManager.SENSOR_DELAY_GAME );  // Measurement interval (microsec)
-        sensorManager.registerListener( this ,                              // Listener
-                gravitySensor ,                     // Sensor to measure
-                SensorManager.SENSOR_DELAY_GAME );  // Measurement interval (microsec)
+        sensorManager.registerListener(this,                              // Listener
+                gravitySensor,                     // Sensor to measure
+                SensorManager.SENSOR_DELAY_GAME);  // Measurement interval (microsec)
     }
 
     /** Stops all sensing. */
     private void stopSensing() {
 
         // Stop sampling all sensors
-        sensorManager.unregisterListener( this );
+        sensorManager.unregisterListener(this);
     }
 
     /** Called when the sensor value has changed (not necessarily periodically). */
@@ -349,7 +349,42 @@ public class ShootingAppActivity
                 //  repeat gun types in more than one shooting region. Note
                 //  that the shootingRegions are numbered from 1, and sound
                 //  numbers are numbered from 0.
+
+                if ((shootingDirection >= 0.0) && (shootingDirection < 45.0))
+                {
+                    shootingRegion = 1;
+                }
+                else if ((shootingDirection >= 45.0) && (shootingDirection < 90.0))
+                {
+                    shootingRegion = 2;
+                }
+                else if ((shootingDirection >= 90.0) && (shootingDirection < 135.0))
+                {
+                    shootingRegion = 3;
+                }
+                else if ((shootingDirection >= 135.0) && (shootingDirection < 180.0))
+                {
+                    shootingRegion = 4;
+                }
+                else if ((shootingDirection >= 180.0) && (shootingDirection < 225.0))
+                {
+                    shootingRegion = 5;
+                }
+                else if ((shootingDirection >= 225.0) && (shootingDirection < 270.0))
+                {
+                    shootingRegion = 6;
+                }
+                else if ((shootingDirection >= 270.0) && (shootingDirection < 315.0))
+                {
+                    shootingRegion = 7;
+                }
+                else if ((shootingDirection >= 315.0) && (shootingDirection <= 360.0))
+                {
+                    shootingRegion = 8;
+                }
+
                 int soundNumber = ( ( shootingRegion - 1 ) % soundResourceList.length );
+
                 playSound( soundNumber );
             }
         }
