@@ -129,7 +129,7 @@ public class ShootingAppActivity
         // Get references to the GUI widgets
         textView_Accl = (TextView) findViewById( R.id.TextView_Accl );
         textView_Gravity = (TextView) findViewById( R.id.TextView_Gravity );
-        textView_PhoneGesture = (TextView) findViewById( R.id.TextView_PhoneGesture );
+        textView_PhoneGesture = (TextView) findViewById(R.id.TextView_PhoneGesture);
         textView_PhoneFaceUp = (TextView) findViewById( R.id.TextView_PhoneFaceUp );
         textView_PhoneShootingRegion = (TextView) findViewById( R.id.TextView_PhoneShootingRegion );
     }
@@ -190,7 +190,7 @@ public class ShootingAppActivity
     private void stopSensing() {
 
         // Stop sampling all sensors
-        sensorManager.unregisterListener( this );
+        sensorManager.unregisterListener(this);
     }
 
     float[] gData = new float[3]; // accelerometer
@@ -414,7 +414,9 @@ public class ShootingAppActivity
                 //  repeat gun types in more than one shooting region. Note
                 //  that the shootingRegions are numbered from 1, and sound
                 //  numbers are numbered from 0.
+
                 int soundNumber = ( ( shootingRegion - 1 ) % soundResourceList.length );
+
                 playSound( soundNumber );
             }
         }
