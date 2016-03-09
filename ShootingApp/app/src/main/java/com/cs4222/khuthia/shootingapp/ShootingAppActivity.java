@@ -144,11 +144,19 @@ public class ShootingAppActivity
         // Get references to the linear accl and gravity sensors
         acclSensor = sensorManager.getDefaultSensor( Sensor.TYPE_LINEAR_ACCELERATION );
         gravitySensor = sensorManager.getDefaultSensor( Sensor.TYPE_GRAVITY );
+        acclSensor2 = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        magneticSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         if( acclSensor == null ) {
             throw new Exception( "Oops, there is no linear accelerometer sensor on this device :(" );
         }
         else if( gravitySensor == null ) {
             throw new Exception( "Oops, there is no gravity sensor on this device :(" );
+        }
+        else if( acclSensor2 == null ) {
+            throw new Exception( "Oops, there is no accelerometer sensor on this device :(" );
+        }
+        else if( magneticSensor == null ) {
+            throw new Exception( "Oops, there is no magnetic field sensor on this device :(" );
         }
     }
 
@@ -169,6 +177,13 @@ public class ShootingAppActivity
         sensorManager.registerListener( this ,                              // Listener
                 gravitySensor ,                     // Sensor to measure
                 SensorManager.SENSOR_DELAY_GAME );  // Measurement interval (microsec)
+
+        sensorManager.registerListener( this ,                              // Listener
+                acclSensor2 ,                     // Sensor to measure
+                SensorManager.SENSOR_DELAY_GAME );  // Measurement interval (microsec)
+        sensorManager.registerListener( this ,                              // Listener
+                magneticSensor ,                     // Sensor to measure
+                SensorManager.SENSOR_DELAY_GAME );  // Measurement interval (microsec)
     }
 
     /** Stops all sensing. */
@@ -177,6 +192,12 @@ public class ShootingAppActivity
         // Stop sampling all sensors
         sensorManager.unregisterListener( this );
     }
+
+    float[] gData = new float[3]; // accelerometer
+    float[] mData = new float[3]; // magnetometer
+    float[] rMat = new float[9];
+    float[] iMat = new float[9];
+    float[] orientation = new float[3];
 
     /** Called when the sensor value has changed (not necessarily periodically). */
     public void onSensorChanged( SensorEvent event ) {
@@ -193,6 +214,16 @@ public class ShootingAppActivity
         // Case 2: Linear accl sensor
         else if( event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION ) {
             processAcclValues( event );
+        }
+        else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            gData = event.values.clone();
+        }
+        else if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+            mData = event.values.clone();
+        }
+
+        if ( SensorManager.getRotationMatrix( rMat, iMat, gData, mData ) ) {
+            mAzimuth= (int) ( Math.toDegrees( SensorManager.getOrientation( rMat, orientation )[0] ) + 360 + offset) % 360;
         }
 
         // PA3: Detect the shooting direction and region.
@@ -276,6 +307,40 @@ public class ShootingAppActivity
         // PA3: Detect the shooting direction and region.
         //  Think about what sensor or sensors on the phone can
         //  help you do this.
+        shootingDirection = mAzimuth;
+
+        if ((shootingDirection >= 0.0) && (shootingDirection < 45.0))
+        {
+            shootingRegion = 1;
+        }
+        else if ((shootingDirection >= 45.0) && (shootingDirection < 90.0))
+        {
+            shootingRegion = 2;
+        }
+        else if ((shootingDirection >= 90.0) && (shootingDirection < 135.0))
+        {
+            shootingRegion = 3;
+        }
+        else if ((shootingDirection >= 135.0) && (shootingDirection < 180.0))
+        {
+            shootingRegion = 4;
+        }
+        else if ((shootingDirection >= 180.0) && (shootingDirection < 225.0))
+        {
+            shootingRegion = 5;
+        }
+        else if ((shootingDirection >= 225.0) && (shootingDirection < 270.0))
+        {
+            shootingRegion = 6;
+        }
+        else if ((shootingDirection >= 270.0) && (shootingDirection < 315.0))
+        {
+            shootingRegion = 7;
+        }
+        else if ((shootingDirection >= 315.0) && (shootingDirection <= 360.0))
+        {
+            shootingRegion = 8;
+        }
 
         // PA3: After you have detected the shooting region, assign the
         //  region number (in the range 1 to 8) to the member variable
@@ -502,6 +567,9 @@ public class ShootingAppActivity
     /** Gravity sensor. */
     private Sensor gravitySensor;
 
+    private Sensor acclSensor2;
+    private Sensor magneticSensor;
+
     // Gravity sensor
     /** Last time the GUI was updated about phone angle (UNIX millisec). */
     private long lastPhoneAngleTime = 0L;
@@ -537,6 +605,9 @@ public class ShootingAppActivity
     private float shootingDirection;
     /** Shooting region the user is pointing at (numbered from 1 .. NUM_SHOOTING_REGIONS). */
     private int shootingRegion;
+
+    private int mAzimuth = 0; // degree
+    private int offset = 200;
 
     // GUI widgets
     /** Text view displaying the linear accl processing. */
