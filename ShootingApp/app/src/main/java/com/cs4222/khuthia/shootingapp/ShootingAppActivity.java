@@ -195,7 +195,7 @@ public class ShootingAppActivity
 
     float[] gData = new float[3]; // accelerometer
     float[] mData = new float[3]; // magnetometer
-    float[] rMat = new float[9];
+    float[] rMat = new float[9];  // rotation matrix
     float[] iMat = new float[9];
     float[] orientation = new float[3];
 
