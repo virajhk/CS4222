@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Kuthia/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_fe61444cc6686382a99f27df673666489f4221a0.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_134eff3f9dd8a37047fbe491dd577f92737b3f06.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.0.30/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cebe8e4a3a469c4623addcca1dc571407ff3a08e">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-4.0.30_fcb8b6ccbefb4d68adf9bfa0a49fa21b0220c56d.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.1.1_f8223580f6d03d5f99366c062db99c64b6a3d48c.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_d63f980e751f5537b85892adb0e785ddfc69387f.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_39419890c0cb30406ba6dc4203fcd95c65453f53.jar" />
+    </item>
+    <item
+        jar="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/Kuthia/AndroidStudioProjects/SensorLogApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_127731184fc4b2948c9e8430331cf7cbd487cbda.jar" />
+    </item>
+
+</items>
